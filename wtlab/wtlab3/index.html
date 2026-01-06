@@ -10,7 +10,7 @@
 
 <body >
     <header class="header">
-        <img src="c:\Users\Chandrika\Documents\GitHub\demo-git\logo.jpg" alt="Cafe Logo" class="logo">
+        <img src="logo.jpg" alt="Cafe Logo" class="logo">
         <h1>
             In Love Cafe
         </h1>
@@ -134,6 +134,33 @@
                         <source src="c:\Users\Chandrika\Documents\GitHub\demo-git\cafevideo1.mp4">
                     </video>
                 </section> 
+                <section id="variables">
+                    <h2>Cafe Details</h2>
+                    <p id="cafenameText"></p>
+                    <p id="coffeeprice"></p>
+                    <p id="cafestatus"></p>
+                    <p id="ordercount"></p>
+                    <button onclick="increase()">Add Order</button>
+                </section>
+                <section id="functions">
+                    <p id="message"></p>
+                    <p id="totalprice"></p>
+                    <button onclick="showWelcome()">Welcome</button>
+                    <button onclick="calculateprice()">Calculate Bill</button>
+                    <button onclick="changestatus()">Change Status</button>
+                    <button onclick="showThanks()">Thanks</button>
+                </section>
+                <section id="object-section">
+                    <h2>Cafe Information</h2>
+                    <p id="objname"></p>
+                    <p id="objlocation"></p>
+                    <p id="objstatus"></p>
+                    <button onclick="updateStatus()">Toggle Status</button>
+                </section>
+               <section id="popup-section">
+                <p id="popupresult"></p>
+                <button id="popupBtn">Start Interaction</button>
+               </section>
             </div>
             <div class="right">
                 <h3>Gallery: </h3>
@@ -223,5 +250,6 @@
           <p>softblooms23@gmail.com</p>
           <p>2024 In Love Cafe. All Rights Reserved.</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
