@@ -7,27 +7,42 @@ if ($conn->connect_error) {
 
 if (isset($_POST['signup'])) {
 
-    $name         = trim($_POST['Name']);
-    $email        = trim($_POST['Email']);
-    $password     = $_POST['Password'];
+    // 🔹 Clean input using string functions
+    $name     = trim($_POST['Name']);
+    $email    = trim($_POST['Email']);
+    $password = trim($_POST['Password']);
 
-    $sql = "INSERT INTO users
-            (Name, Email,Password)
-            VALUES (?, ?,?)";
+    // 🔹 Format name properly
+    $name = ucwords(strtolower($name));
+
+    // 🔹 Secure inputs
+    $name  = htmlspecialchars($name);
+    $email = htmlspecialchars($email);
+
+    // 🔹 Validate input length
+    if (strlen($name) < 3) {
+        die("Name must be at least 3 characters long");
+    }
+
+    if (strlen($password) < 6) {
+        die("Password must be at least 6 characters long");
+    }
+
+    // 🔹 Insert query
+    $sql = "INSERT INTO users (Name, Email, Password) VALUES (?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
 
-    $stmt->bind_param(
-        "sss",
-        $name,
-        $email,
-        $password
-    );
+    if (!$stmt) {
+        die("Prepare failed");
+    }
+
+    $stmt->bind_param("sss", $name, $email, $password);
 
     if ($stmt->execute()) {
-        echo " Inserted successfully";
+        echo "Registration successful";
     } else {
-        echo " Not inserted";
+        echo "Registration failed";
     }
 
     $stmt->close();
