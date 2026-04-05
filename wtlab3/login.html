@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <style>
+        .oauth-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: white;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .google-btn {
+            background-color: #db4437;
+        }
+
+        .github-btn {
+            background-color: #333;
+        }
+
+        .firebase-btn {
+            background-color: #f5a623;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Login Form</h2>
+
+    <form action="login.php" method="post">
+        Email: <input type="email" name="Email" required><br><br>
+        Password: <input type="password" name="Password" required><br><br>
+
+        <button type="submit" name="login">Login</button>
+    </form>
+
+    <hr>
+    <h3>Social Login Options</h3>
+    <!-- Google Login -->
+    <a href="google_login.php" class="oauth-btn google-btn">Login with Google</a><br>
+
+    <!-- GitHub Login -->
+    <a href="github_login.php" class="oauth-btn github-btn">Login with GitHub</a><br>
+
+    <!-- Firebase Login -->
+    <button onclick="firebaseGoogleLogin()" class="oauth-btn firebase-btn">Login with Firebase</button>
+
+    <script>
+        // TODO: Replace with your Firebase project configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBSzG6zFf1iDWHg14LuTFoMzssLaERPJpM",
+            authDomain: "cafe-62243.firebaseapp.com",
+            projectId: "cafe-62243",
+            storageBucket: "cafe-62243.firebasestorage.app",
+            messagingSenderId: "187093285059",
+            appId: "1:187093285059:web:64ca1ed0304af65d78ca76",
+            measurementId: "G-PWNTL70TYE"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        function firebaseGoogleLogin() {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider).then((result) => {
+                // User is signed in via frontend!
+                var user = result.user;
+                console.log("Logged in user frontend-only:", user);
+
+                // To implement verification with backend server:
+                user.getIdToken().then((idToken) => {
+                    // Send token to your backend via POST
+                    var form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = "firebase_backend.php";
+
+                    var hiddenField = document.createElement("input");
+                    hiddenField.type = "hidden";
+                    hiddenField.name = "idToken";
+                    hiddenField.value = idToken;
+
+                    form.appendChild(hiddenField);
+                    document.body.appendChild(form);
+                    form.submit();
+                });
+            }).catch((error) => {
+                console.error("Firebase Auth Error:", error.message);
+                alert("Firebase Login failed: " + error.message);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
