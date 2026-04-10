@@ -1,0 +1,16 @@
+body {
+  font-family: Arial;
+}
+
+.highlight {
+  background-color: yellow;
+  font-size: 20px;
+}
+
+#box {
+  width: 100px;
+  height: 100px;
+  background: blue;
+  position: relative;
+  margin: 20px;
+}
