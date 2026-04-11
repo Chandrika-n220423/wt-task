@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chandrika — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f4ef;
+      --paper-elevated: #ffffff;
+      --ink: #1c1917;
+      --muted: #57534e;
+      --line: #d6d3d1;
+      --accent: #b45309;
+      --accent-hover: #92400e;
+      --accent-soft: rgba(180, 83, 9, 0.12);
+    }
+    html {
+      scroll-padding-top: 80px;
+      background-color: var(--paper);
+    }
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      color: var(--ink);
+      background-color: var(--paper);
+      min-height: 100vh;
+    }
+    h1, h2, h3, h4, h5, h6, .font-serif {
+      font-family: "Fraunces", Georgia, serif;
+      color: var(--ink);
+    }
+    .navbar-surface {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-link {
+      color: var(--muted) !important;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--ink) !important;
+    }
+    .nav-link.active {
+      text-decoration: underline;
+      text-underline-offset: 0.35rem;
+    }
+    .nav-underline .nav-link {
+      color: var(--muted) !important;
+    }
+    .nav-underline .nav-link.active {
+      color: var(--accent) !important;
+    }
+    .rule-accent {
+      width: 3rem;
+      height: 3px;
+      background: var(--accent);
+    }
+    .hero-name {
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .section-num {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .surface-card {
+      background: var(--paper-elevated);
+      border: 1px solid var(--line);
+      border-radius: 0.25rem;
+    }
+    .section-band {
+      background: #f0ece4;
+      border-color: var(--line) !important;
+    }
+    .skill-meter .progress {
+      height: 0.4rem;
+      border-radius: 0;
+      background: #e7e5e4;
+    }
+    .skill-meter .progress-bar {
+      background: var(--accent);
+    }
+    .btn-accent {
+      --bs-btn-color: #fff;
+      --bs-btn-bg: var(--accent);
+      --bs-btn-border-color: var(--accent);
+      --bs-btn-hover-bg: var(--accent-hover);
+      --bs-btn-hover-border-color: var(--accent-hover);
+      --bs-btn-hover-color: #fff;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 0.2rem var(--accent-soft);
+    }
+    .accordion-button:not(.collapsed) {
+      background: var(--accent-soft);
+      color: var(--ink);
+    }
+    .accordion-button:focus {
+      box-shadow: 0 0 0 0.2rem var(--accent-soft);
+    }
+    .list-group-item {
+      --bs-list-group-bg: transparent;
+    }
+    .resume-doc {
+      max-width: 960px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light navbar-surface sticky-top" aria-label="Main">
+    <div class="container py-1">
+      <a class="navbar-brand font-serif fw-semibold text-dark" href="#home">Chandrika</a>
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="btn btn-sm btn-outline-dark d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#cvPanel" aria-controls="cvPanel">
+          <i class="bi bi-layout-sidebar-reverse"></i>
+        </button>
+        <button class="navbar-toggler border-0 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-1 text-center text-lg-start">
+          <li class="nav-item"><a class="nav-link active" href="#home">Résumé</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">Summary</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#interactive">Interactive</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item dropdown ms-lg-2">
+            <a class="nav-link dropdown-toggle rounded px-2" href="#" id="navJump" data-bs-toggle="dropdown" aria-expanded="false">Jump</a>
+            <ul class="dropdown-menu dropdown-menu-end border shadow-sm" aria-labelledby="navJump">
+              <li><a class="dropdown-item" href="#skills"><i class="bi bi-stars me-2 text-secondary"></i>Skills</a></li>
+              <li><a class="dropdown-item" href="#projects"><i class="bi bi-folder2-open me-2 text-secondary"></i>Projects</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#contact"><i class="bi bi-send me-2 text-secondary"></i>Contact</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cvPanel" aria-labelledby="cvPanelLabel">
+    <div class="offcanvas-header border-bottom">
+      <h2 class="offcanvas-title h5 font-serif" id="cvPanelLabel">On this page</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="list-group list-group-flush">
+        <a href="#about" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">Summary</a>
+        <a href="#skills" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">Skills</a>
+        <a href="#projects" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">Projects</a>
+        <a href="#education" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">Education</a>
+        <a href="#interactive" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">Interactive</a>
+        <a href="#contact" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <header id="home" class="border-bottom border-2 border-secondary bg-white">
+    <div class="container py-4 py-md-5 resume-doc">
+      <div class="row align-items-start g-4 g-xl-5">
+        <div class="col-12 col-lg-8 order-2 order-lg-1">
+          <h1 class="hero-name font-serif fw-semibold mb-2">Chandrika</h1>
+          <p class="h5 text-secondary fw-normal mb-3">Full-stack developer</p>
+          <ul class="list-unstyled small text-secondary mb-4 mb-lg-4 border-start border-3 ps-3" style="border-color: var(--accent) !important;">
+            <li><a href="mailto:chandrrika23@gmail.com" class="link-dark text-decoration-none">chandrika23@gmail.com</a></li>
+            <li>+91 939-886-5265</li>
+            <li>Vijayawada, India</li>
+          </ul>
+          <p class="text-secondary mb-4 mb-lg-0" id="heroTagline">Builds responsive web interfaces, APIs, and clear documentation. Strong focus on maintainable HTML/CSS, Bootstrap, and JavaScript.</p>
+          <div class="d-flex flex-column flex-sm-row gap-2 gap-sm-3 pt-2">
+            <a href="#contact" class="btn btn-accent px-4 rounded-0">Contact</a>
+            <a href="#projects" class="btn btn-outline-dark px-4 rounded-0">Projects</a>
+          </div>
+          <div class="d-flex flex-wrap gap-3 pt-3">
+            <a href="#" class="text-secondary text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="LinkedIn" aria-label="LinkedIn"><i class="bi bi-linkedin fs-5"></i></a>
+            <a href="#" class="text-secondary text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="GitHub" aria-label="GitHub"><i class="bi bi-github fs-5"></i></a>
+          </div>
+        </div>
+        <div class="col-12 col-sm-7 col-lg-4 order-1 order-lg-2 mx-auto mx-lg-0">
+          <figure class="mb-0 surface-card p-2 p-sm-3">
+            <img src="images/chandrika-pic.png" class="img-fluid w-100 rounded" alt="Photo">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="py-4 py-md-5">
+    <div class="container resume-doc">
+      <div class="row mb-3 mb-md-4">
+        <div class="col-12">
+          <p class="section-num mb-2">Professional summary</p>
+          <h2 class="font-serif h3 mb-3">Profile</h2>
+          <p class="text-secondary mb-3">Developer with experience shipping responsive pages and forms. Comfortable with Bootstrap, JavaScript, Git, and working from design specs to production.</p>
+          <ul class="mb-0 ps-3 text-secondary small">
+            <li class="mb-2">Delivers layouts that work from mobile to desktop using CSS grids, flex utilities, and tested breakpoints.</li>
+            <li class="mb-2">Writes semantic HTML and accessible patterns (labels, focus states, readable contrast).</li>
+            <li>Collaborates using Git, code review, and clear handoffs between design and implementation.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="py-4 py-md-5 section-band border-top border-bottom">
+    <div class="container resume-doc">
+      <div class="row align-items-end mb-4 mb-md-5 g-3">
+        <div class="col-12 col-lg-8">
+          <p class="section-num mb-2">Technical skills</p>
+          <h2 class="font-serif h3 mb-0">Skills</h2>
+        </div>
+        <div class="col-12 col-lg-4 text-lg-end">
+          <span class="badge rounded-pill text-bg-light border text-secondary fw-normal px-3 py-2">Also: jQuery · REST · Git</span>
+        </div>
+      </div>
+      <div class="row g-4 skill-meter">
+        <div class="col-12 col-sm-6 col-xl-4">
+          <div class="d-flex justify-content-between align-items-baseline mb-1">
+            <span class="small fw-semibold">HTML / CSS</span>
+            <span class="small text-secondary">95%</span>
+          </div>
+          <div class="progress rounded-0" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:95%"></div></div>
+        </div>
+        <div class="col-12 col-sm-6 col-xl-4">
+          <div class="d-flex justify-content-between align-items-baseline mb-1">
+            <span class="small fw-semibold">JavaScript</span>
+            <span class="small text-secondary">88%</span>
+          </div>
+          <div class="progress rounded-0" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:88%"></div></div>
+        </div>
+        <div class="col-12 col-sm-6 col-xl-4">
+          <div class="d-flex justify-content-between align-items-baseline mb-1">
+            <span class="small fw-semibold">Bootstrap</span>
+            <span class="small text-secondary">92%</span>
+          </div>
+          <div class="progress rounded-0" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:92%"></div></div>
+        </div>
+        <div class="col-12 col-sm-6 col-xl-4">
+          <div class="d-flex justify-content-between align-items-baseline mb-1">
+            <span class="small fw-semibold">React</span>
+            <span class="small text-secondary">80%</span>
+          </div>
+          <div class="progress rounded-0" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:80%"></div></div>
+        </div>
+        <div class="col-12 col-sm-6 col-xl-4">
+          <div class="d-flex justify-content-between align-items-baseline mb-1">
+            <span class="small fw-semibold">Node</span>
+            <span class="small text-secondary">75%</span>
+          </div>
+          <div class="progress rounded-0" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:75%"></div></div>
+        </div>
+        <div class="col-12 col-sm-6 col-xl-4">
+          <div class="d-flex justify-content-between align-items-baseline mb-1">
+            <span class="small fw-semibold">Git</span>
+            <span class="small text-secondary">82%</span>
+          </div>
+          <div class="progress rounded-0" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:82%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="py-4 py-md-5">
+    <div class="container resume-doc">
+      <div class="row mb-4 mb-md-5">
+        <div class="col-12 col-lg-8">
+          <p class="section-num mb-2">Portfolio / projects</p>
+          <h2 class="font-serif h3 mb-2">Selected projects</h2>
+          <p class="text-secondary mb-0 small">Short descriptions for each project. <strong>Details</strong> opens a fuller note.</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-xl-4">
+          <article class="surface-card h-100 overflow-hidden d-flex flex-column">
+            <img src="https://placehold.co/640x360/f0ece4/b45309/png?text=Dashboard" class="img-fluid w-100" alt="Dashboard project preview">
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <h3 class="h6 font-serif mb-2">Analytics dashboard</h3>
+              <p class="small text-secondary flex-grow-1">Dense data, calm layout — grid + cards.</p>
+              <button type="button" class="btn btn-sm btn-outline-dark rounded-0 align-self-start" data-bs-toggle="modal" data-bs-target="#modalP1">Details</button>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4">
+          <article class="surface-card h-100 overflow-hidden d-flex flex-column">
+            <img src="https://placehold.co/640x360/d6d3d1/44403c/png?text=Commerce" class="img-fluid w-100" alt="Commerce project preview">
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <h3 class="h6 font-serif mb-2">Commerce UI</h3>
+              <p class="small text-secondary flex-grow-1">Checkout flows with validated forms.</p>
+              <button type="button" class="btn btn-sm btn-outline-dark rounded-0 align-self-start" data-bs-toggle="modal" data-bs-target="#modalP2">Details</button>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4">
+          <article class="surface-card h-100 overflow-hidden d-flex flex-column">
+            <img src="https://placehold.co/640x360/a8a29e/1c1917/png?text=Learning" class="img-fluid w-100" alt="Learning app preview">
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <h3 class="h6 font-serif mb-2">Learning app</h3>
+              <p class="small text-secondary flex-grow-1">Lessons, quizzes, progress UI.</p>
+              <button type="button" class="btn btn-sm btn-outline-dark rounded-0 align-self-start" data-bs-toggle="modal" data-bs-target="#modalP3">Details</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-12 col-xl-10 mx-auto">
+          <p class="small text-secondary text-center mb-3">Gallery</p>
+          <div id="galleryCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1 — waffles"></button>
+              <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="1" aria-label="Slide 2 — breakfast"></button>
+              <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="2" aria-label="Slide 3 — donuts"></button>
+            </div>
+            <div class="carousel-inner surface-card rounded overflow-hidden">
+              <div class="carousel-item active">
+                <img src="images/slide-1.png" class="d-block w-100 img-fluid" alt="Waffles with ice cream, berries, and caramel" style="max-height: 520px; object-fit: cover; object-position: center;">
+              </div>
+              <div class="carousel-item">
+                <img src="images/slide-2.png" class="d-block w-100 img-fluid" alt="Coffee and breakfast flat lay" style="max-height: 520px; object-fit: cover; object-position: center;">
+              </div>
+              <div class="carousel-item">
+                <img src="images/slide-3.png" class="d-block w-100 img-fluid" alt="Donuts and coffee" style="max-height: 520px; object-fit: cover; object-position: center;">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon bg-dark rounded" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon bg-dark rounded" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal fade" id="modalP1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content rounded-0 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h2 class="modal-title font-serif h5">Analytics dashboard</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body pt-2 small text-secondary">Led UI refactor with shared card components and faster load on mobile.</div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modalP2" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-0 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h2 class="modal-title font-serif h5">Commerce UI</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body pt-2 small text-secondary">Checkout and form validation with a mobile-friendly flow.</div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modalP3" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-0 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h2 class="modal-title font-serif h5">Learning app</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body pt-2 small text-secondary">Lesson UI with progress tracking, quizzes, and save feedback.</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="education" class="py-4 py-md-5 section-band border-top">
+    <div class="container resume-doc">
+      <div class="row mb-4 mb-md-5">
+        <div class="col-12 col-lg-6">
+          <p class="section-num mb-2">Education</p>
+          <h2 class="font-serif h3 mb-0">Degrees &amp; training</h2>
+        </div>
+      </div>
+      <div class="row g-0">
+        <div class="col-12 col-lg-10">
+          <div class="list-group list-group-flush">
+            <div class="list-group-item px-0 py-4 border-secondary-subtle">
+              <div class="row">
+                <div class="col-12 col-sm-4 col-md-3 small text-secondary">2024 — 2028</div>
+                <div class="col-12 col-sm-8 col-md-9">
+                  <h3 class="h6 font-serif mb-1">Computer Science</h3>
+                  <p class="small text-secondary mb-0">State University. Coursework: algorithms, web systems, HCI capstone.</p>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item px-0 py-4 border-secondary-subtle">
+              <div class="row">
+                <div class="col-12 col-sm-4 col-md-3 small text-secondary">2022</div>
+                <div class="col-12 col-sm-8 col-md-9">
+                  <h3 class="h6 font-serif mb-1">PUC</h3>
+                  <p class="small text-secondary mb-0">itermediate</p>
+                </div>
+              </div>
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="interactive" class="py-4 py-md-5 border-top">
+    <div class="container resume-doc">
+      <div class="row mb-4 mb-md-5">
+        <div class="col-12 col-lg-8">
+          <p class="section-num mb-2">Interactive</p>
+          <h2 class="font-serif h3 mb-2">Questions &amp; quick tips</h2>
+          <p class="text-secondary small mb-0">FAQs, tips, and a popover.</p>
+        </div>
+      </div>
+      <ul class="nav nav-underline flex-column flex-sm-row gap-2 gap-sm-3 mb-4" id="ixTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active px-0" id="t-faq" data-bs-toggle="tab" data-bs-target="#c-faq" type="button" role="tab" aria-controls="c-faq" aria-selected="true">Questions</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link px-0" id="t-tips" data-bs-toggle="tab" data-bs-target="#c-tips" type="button" role="tab" aria-controls="c-tips" aria-selected="false">Tips</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link px-0" id="t-extra" data-bs-toggle="tab" data-bs-target="#c-extra" type="button" role="tab" aria-controls="c-extra" aria-selected="false">Extra</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="ixTabContent">
+        <div class="tab-pane fade show active" id="c-faq" role="tabpanel" aria-labelledby="t-faq" tabindex="0">
+          <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+              <div class="accordion accordion-flush surface-card" id="faqAcc">
+                <div class="accordion-item bg-transparent">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#fq1" aria-expanded="false" aria-controls="fq1">Freelance availability?</button>
+                  </h3>
+                  <div id="fq1" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                    <div class="accordion-body small text-secondary">Open to internships and junior roles; prefer remote or hybrid. Vijayawada-based; details via the contact form.</div>
+                  </div>
+                </div>
+                <div class="accordion-item bg-transparent">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#fq2" aria-expanded="false" aria-controls="fq2">Preferred tools?</button>
+                  </h3>
+                  <div id="fq2" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                    <div class="accordion-body small text-secondary">HTML, CSS, JavaScript, Bootstrap, Git; coursework and projects with React and Node.</div>
+                  </div>
+                </div>
+                <div class="accordion-item bg-transparent border-0">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#fq3" aria-expanded="false" aria-controls="fq3">References?</button>
+                  </h3>
+                  <div id="fq3" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                    <div class="accordion-body small text-secondary">Professional and academic references available on request.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="c-tips" role="tabpanel" aria-labelledby="t-tips" tabindex="0">
+          <div class="row justify-content-center text-center">
+            <div class="col-12 col-md-8 col-lg-6 surface-card p-4 p-md-5">
+              <p class="mb-3 small text-secondary" id="tipLine">Résumé tip: keep bullet points one line when possible.</p>
+              <button type="button" class="btn btn-accent rounded-0" id="btnTip"><i class="bi bi-shuffle me-2"></i>Another tip</button>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="c-extra" role="tabpanel" aria-labelledby="t-extra" tabindex="0">
+          <div class="row justify-content-center text-center">
+            <div class="col-12 col-md-8">
+              <button class="btn btn-outline-dark rounded-0 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#moreIx" aria-expanded="false" aria-controls="moreIx">Toggle note</button>
+              <div class="collapse mb-4" id="moreIx">
+                <p class="surface-card p-3 small text-secondary text-start mb-0">This page uses Bootstrap’s JavaScript (modals, tabs, carousel) and jQuery for navigation and smooth scrolling.</p>
+              </div>
+              <button type="button" class="btn btn-outline-dark rounded-0" id="popIx" data-bs-toggle="popover" data-bs-title="Resume" data-bs-content="Ask for PDF via the form." data-bs-placement="top">Popover</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-4 py-md-5 section-band border-top">
+    <div class="container pb-4 resume-doc">
+      <div class="row g-4 g-xl-5">
+        <div class="col-12 col-lg-4">
+          <p class="section-num mb-2">Contact</p>
+          <h2 class="font-serif h3 mb-3">Get in touch</h2>
+          <p class="small text-secondary mb-4">Send a message using the form.</p>
+          <address class="small text-secondary not-italic mb-0">
+            <div class="mb-2"><i class="bi bi-geo-alt me-2"></i>Vijayawada, India</div>
+            <div class="mb-2"><i class="bi bi-envelope me-2"></i><a href="mailto:chandrika23@gmail.com" class="link-dark">chandrika23@gmail.com</a></div>
+            <div><i class="bi bi-phone me-2"></i>+91 939-886-5265</div>
+          </address>
+        </div>
+        <div class="col-12 col-lg-8">
+          <form class="needs-validation surface-card p-4 p-md-5" id="contactForm" novalidate>
+            <div class="row g-3">
+              <div class="col-12 col-sm-6">
+                <label for="nm" class="form-label small">Name</label>
+                <input type="text" class="form-control rounded-0" id="nm" required minlength="2" placeholder="Your name">
+                <div class="invalid-feedback small">Name required.</div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="em" class="form-label small">Email</label>
+                <input type="email" class="form-control rounded-0" id="em" required placeholder="you@domain.com">
+                <div class="invalid-feedback small">Valid email required.</div>
+              </div>
+              <div class="col-12">
+                <label for="sub" class="form-label small">Subject</label>
+                <select class="form-select rounded-0" id="sub" required>
+                  <option value="">Choose…</option>
+                  <option value="a">Project</option>
+                  <option value="b">Hiring</option>
+                  <option value="c">Other</option>
+                </select>
+                <div class="invalid-feedback small">Pick a subject.</div>
+              </div>
+              <div class="col-12">
+                <label for="msg" class="form-label small">Message</label>
+                <textarea class="form-control rounded-0" id="msg" rows="4" required minlength="10" placeholder="What should we build?"></textarea>
+                <div class="invalid-feedback small">At least 10 characters.</div>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="ok" required>
+                  <label class="form-check-label small" for="ok">I’m okay being contacted about this.</label>
+                  <div class="invalid-feedback">Required.</div>
+                </div>
+              </div>
+              <div class="col-12 d-flex flex-wrap gap-2">
+                <button type="submit" class="btn btn-accent rounded-0 px-4">Send</button>
+                <button type="reset" class="btn btn-outline-secondary rounded-0">Reset</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toastSent" class="toast align-items-center text-bg-warning border-0" role="alert" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body small text-dark"><i class="bi bi-check2-circle me-2"></i>Thanks — your message is valid and ready to send.</div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-top border-secondary py-4 py-md-5 mt-auto section-band">
+    <div class="container">
+      <div class="row align-items-center gy-3">
+        <div class="col-12 col-md-6 text-center text-md-start small text-secondary">
+          <span class="font-serif text-dark fw-semibold">Chandrika</span> — résumé
+        </div>
+        <div class="col-12 col-md-6 text-center text-md-end small">
+          <a href="#home" class="text-secondary text-decoration-none me-3">Top</a>
+          <span class="text-secondary">© <span id="y"></span></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    (function ($) {
+      'use strict';
+
+      document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function (el) {
+        new bootstrap.Tooltip(el);
+      });
+      var p = document.getElementById('popIx');
+      if (p) new bootstrap.Popover(p);
+
+      var toastEl = document.getElementById('toastSent');
+      var toast = toastEl ? new bootstrap.Toast(toastEl) : null;
+      var form = document.getElementById('contactForm');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+            return;
+          }
+          form.classList.add('was-validated');
+          if (toast) toast.show();
+        });
+      }
+
+      $('a[href^="#"]').on('click', function (e) {
+        var id = this.getAttribute('href');
+        if (!id || id === '#') return;
+        var $t = $(id);
+        if ($t.length) {
+          e.preventDefault();
+          $('html, body').animate({ scrollTop: $t.offset().top - 76 }, 420);
+          var nav = document.getElementById('navbarMain');
+          if (nav && nav.classList.contains('show')) {
+            bootstrap.Collapse.getOrCreateInstance(nav).hide();
+          }
+        }
+      });
+
+      var $links = $('.navbar .nav-link[href^="#"]');
+      var $blocks = $('header[id], section[id]');
+      $(window).on('scroll resize', function () {
+        var y = $(window).scrollTop() + 88;
+        $blocks.each(function () {
+          var $b = $(this);
+          var t = $b.offset().top, h = $b.outerHeight(), id = $b.attr('id');
+          if (y >= t && y < t + h) {
+            $links.removeClass('active');
+            $links.filter('[href="#' + id + '"]').addClass('active');
+          }
+        });
+      });
+
+      var tips = [
+        'Lead each job/project with a strong verb: Built, Shipped, Improved, Fixed.',
+        'One page is enough for early career — cut filler.',
+        'Match keywords from the job posting (honestly).',
+        'Proofread; ask a friend to scan in 30 seconds.',
+        'Save PDF as “FirstName_LastName_Resume.pdf”.'
+      ];
+      var i = 0;
+      $('#btnTip').on('click', function () {
+        i = (i + 1) % tips.length;
+        $('#tipLine').fadeOut(120, function () {
+          $(this).text(tips[i]).fadeIn(120);
+        });
+      });
+
+      $('#y').text(new Date().getFullYear());
+
+    })(jQuery);
+  </script>
+</body>
+</html>
